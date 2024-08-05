@@ -1,5 +1,6 @@
 import 'package:check_weather/model/weather_model.dart';
 import 'package:check_weather/service/weather_service.dart';
+import 'package:check_weather/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
@@ -60,14 +61,47 @@ class _WeatherPageState extends State<WeatherPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Theme.of(context).colorScheme.background,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(weatherModel?.cityName ?? "Loading City...."),
+            Icon(
+              Icons.location_on,
+              color: Theme.of(context).colorScheme.primary,
+              size: 40,
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 10),
+              child: Text(
+                weatherModel?.cityName ?? "Loading City....",
+                style: TextStyle(
+                  fontSize: 30,
+                  fontWeight: FontWeight.w500,
+                  color: Theme.of(context).colorScheme.primary,
+                ),
+              ),
+            ),
             Lottie.asset(getWeatherAnimation(weatherModel?.mainCondition)),
-            Text("${weatherModel?.temperature.round()}°C"),
-            Text(weatherModel?.mainCondition ?? ""),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 10),
+              child: Text(
+                "${weatherModel?.temperature.round()}°C",
+                style: TextStyle(
+                  fontSize: 50,
+                  fontWeight: FontWeight.w500,
+                  color: Theme.of(context).colorScheme.primary,
+                ),
+              ),
+            ),
+            Text(
+              weatherModel?.mainCondition ?? "",
+              style: TextStyle(
+                fontSize: 30,
+                fontWeight: FontWeight.w500,
+                color: Theme.of(context).colorScheme.primary,
+              ),
+            ),
           ],
         ),
       ),

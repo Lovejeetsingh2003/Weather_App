@@ -33,9 +33,8 @@ class WeatherService {
     List<Placemark> placemark =
         await placemarkFromCoordinates(position.latitude, position.longitude);
 
-    // String? city = placemark[0].subLocality;
-    // print("city: ${city}");
-    String? city = "phagwara";
+    String? city = placemark[0].subLocality;
+
     return city ?? "";
   }
 }
